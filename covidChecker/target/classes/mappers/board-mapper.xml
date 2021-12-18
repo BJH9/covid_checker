@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Board">
+	<insert id="insertBoard">
+		insert into patient_information(residence_type, confirmed_date, confirmed_status, route_date, route_name, route_arrive_time, route_leave_time)
+		values
+		(#{residence_type}, #{confirmed_date}, #{confirmed_status}, #{route_date}, #{route_name}, #{route_arrive_time}, #{route_leave_time})
+		
+	</insert>
+	<update id="updateBoard">
+		update patient_information
+		set residence_type=#{residence_type}, confirmed_date=#{confirmed_date}, confirmed_status=#{confirmed_status}, route_date=#{route_date}, route_name=#{route_name}, route_arrive_time=#{route_arrive_time}, route_leave_time=#{route_leave_time}
+		where id=#{id}
+		
+	</update>
+	<delete id="deleteBoard">
+		delete from patient_information where id=#{id}
+		
+	</delete>
+	<select id="getBoard" resultType="board">
+		select * from patient_information where id=#{id}
+		
+	</select>
+	<select id="getBoardList" resultType="board">
+		select * from patient_information order by id desc
+		
+	</select>
+</mapper>
